@@ -30,7 +30,7 @@ def search_from_start(inputGraph, graphSize, tour):
 		graph[i][tour[-1]-1] = -1
 
 	for i in range(graphSize): #Check for shortest dist to next node
-		if (graph[tour[-1]-1][i] < minDist) & (graph[tour[-1]-1][i] != -1): #If last node --> newnode is the best and
+		if (graph[tour[-1]-1][i] < minDist) and (graph[tour[-1]-1][i] != -1): #If last node --> newnode is the best and
 			bestNode = i+1
 			minDist = graph[tour[-1]-1][i]
 

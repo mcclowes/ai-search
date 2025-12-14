@@ -52,7 +52,7 @@ def lower_bound(inputGraph, graphSize):
 		minNode = -1
 		for i in range(1,graphSize):
 			for j in range (i+1,graphSize):
-				if (graph[i][j] < minLen) & (graph[i][j] != -1):
+				if (graph[i][j] < minLen) and (graph[i][j] != -1):
 					minLen = graph[i][j]
 					minNode = j
 		mst.append(minLen)
@@ -64,9 +64,9 @@ def lower_bound(inputGraph, graphSize):
 	lowest2 = 99999999
 	for i in range(graphSize):
 		edge = inputGraph[0][i]
-		if (edge < lowest1) & (edge != -1):
+		if (edge < lowest1) and (edge != -1):
 			lowest2, lowest1 = lowest1, edge
-		elif (edge < lowest2) & (edge != -1):
+		elif (edge < lowest2) and (edge != -1):
 			lowest2 = edge
 	lowerBound = lowerBound + lowest1 + lowest2
 	return lowerBound     

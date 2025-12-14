@@ -33,12 +33,12 @@ def genetic_search(graph, graphSize):
 		mutateRoll2 = randint(1, 10)
 		if (mutateRoll1 <= 2):
 			child1 = gen_mutation1(child1, graph)
-		elif (mutateRoll1 < 2) and (mutateRoll1 < 5):
-			child1 = gen_mutation2(child1, graph)
+		elif (mutateRoll1 > 2) and (mutateRoll1 <= 5):
+			child1 = gen_mutation2(child1)
 		if (mutateRoll2 <= 2):
 			child2 = gen_mutation1(child2, graph)
-		elif (mutateRoll2 < 2) and (mutateRoll2 < 5):
-			child2 = gen_mutation2(child2, graph)
+		elif (mutateRoll2 > 2) and (mutateRoll2 <= 5):
+			child2 = gen_mutation2(child2)
 		#Check child is bigger than worst population and add
 		population = population + [child1]
 		population = population + [child2]
@@ -60,11 +60,11 @@ def gen_population(graph, graphSize):
 def gen_parent(population, graphSize):
 	parent = []
 	roll = randint(1,10)
-	if (roll >= 1) & (roll <= 4): #first quarter -> 4/10
+	if (roll >= 1) and (roll <= 4): #first quarter -> 4/10
 		pRoll = randint(0, int(graphSize/4))
-	elif (roll >= 5) & (roll <= 7): #second quarter -> 3/10
+	elif (roll >= 5) and (roll <= 7): #second quarter -> 3/10
 		pRoll = randint(int(graphSize/4), int(graphSize/4)*2)
-	elif (roll >= 7) & (roll <= 9): #third quarter -> 2/10
+	elif (roll >= 8) and (roll <= 9): #third quarter -> 2/10
 		pRoll = randint(int(graphSize/4)*2, int(graphSize/4)*3)
 	elif (roll == 10): #4th quarter - 1/10
 		pRoll = randint(int(graphSize/4)*3,graphSize-1)
