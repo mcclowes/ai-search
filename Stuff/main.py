@@ -49,13 +49,24 @@ def start_search():
 	while (1):
 		try:
 			userInput = (input('\nWhat would you like to do?\n')).lower()
+			if userInput not in methodList:
+				print('\nCommand not recognised.\n')
+				help()
+				continue
 			(name, size, graph) = parse(str(input('\nSelect a graph file to run on (including file suffix).\n')))
 			print ('Parsing ' + name + '.txt')
 			methodList[userInput](name, graph, size)
 			print ("Search completed")
-		except:
-			print ('\nCommand not recognised.\n')
+		except FileNotFoundError:
+			print('\nError: File not found. Please check the file path.\n')
+		except ValueError as e:
+			print(f'\nError: Invalid input - {e}\n')
+		except KeyboardInterrupt:
+			print('\n\nExiting...')
+			break
+		except Exception as e:
+			print(f'\nUnexpected error: {e}\n')
 			help()
-			continue
 
-start_search()
+if __name__ == "__main__":
+	start_search()
