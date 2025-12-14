@@ -1,8 +1,13 @@
+import os
+
 from brute_force import brute_force_search
 from modified_brute_force import modified_brute_force_search
 from nearest_neighbour import nearest_neighbour_search
 from genetic import genetic_search
 from graph_tools import *
+
+# Data directory path (relative to this file)
+DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 
 def test_brute_force(name, graph, graphSize):
 	print ("Running Brute Force Search...")
@@ -33,6 +38,11 @@ def output_tour(name, size, bestTour, bestTourLength):
 
 methodList = {"brute": test_brute_force, "modified": test_modified_brute_force, "nearest": test_nearest_neightbour, "genetic": test_genetic}
 
+def list_data_files():
+    """List available data files in the data directory."""
+    files = [f for f in os.listdir(DATA_DIR) if f.endswith('.txt')]
+    return sorted(files)
+
 #Print list of commands
 def help():
     print ('\nCommand List:')
@@ -40,8 +50,9 @@ def help():
     print ('Search algorithms:')
     print ('- "brute": Runs a true Brute Force Search algorithm on a given graph. Warning: Running for larger graphs will cause problems.')
     print ('- "modified": Runs a Modified Brute Force Search algorithm on a given graph.')
-    print ('- "nearest: Runs a Nearest Neighbour Search algorithm on a given graph.')
+    print ('- "nearest": Runs a Nearest Neighbour Search algorithm on a given graph.')
     print ('- "genetic": Runs a Genetic Search algorithm on a given graph.\n')
+    print ('Available data files:', ', '.join(list_data_files()))
 
 #Start search
 def start_search():
@@ -53,7 +64,9 @@ def start_search():
 				print('\nCommand not recognised.\n')
 				help()
 				continue
-			(name, size, graph) = parse(str(input('\nSelect a graph file to run on (including file suffix).\n')))
+			filename = str(input('\nSelect a graph file to run on (e.g., AISearchfile012.txt):\n'))
+			file_path = os.path.join(DATA_DIR, filename)
+			(name, size, graph) = parse(file_path)
 			print ('Parsing ' + name + '.txt')
 			methodList[userInput](name, graph, size)
 			print ("Search completed")

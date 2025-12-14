@@ -15,22 +15,26 @@ The Traveling Salesman Problem is a classic optimization problem where the goal 
 
 ```
 ai-search/
-├── brute_force.py              # Brute force implementation
-├── modified_brute_force.py     # Modified brute force with time limits
-├── nearest_neighbour.py        # Nearest neighbor heuristic
-├── genetic.py                  # Genetic algorithm implementation
-├── graph_tools.py              # Utility functions for graph operations
-├── main.py                     # Main program interface
-├── Stuff/                      # Development files
-│   ├── AISearchfile*.txt      # Test case files
-│   └── [algorithm files]      # Algorithm implementations
-└── Submit/                     # Submission files
+├── src/                        # Source code
+│   ├── __init__.py            # Package initialization
+│   ├── brute_force.py         # Brute force implementation
+│   ├── modified_brute_force.py# Modified brute force with time limits
+│   ├── nearest_neighbour.py   # Nearest neighbor heuristic
+│   ├── genetic.py             # Genetic algorithm implementation
+│   ├── graph_tools.py         # Utility functions for graph operations
+│   └── main.py                # Main program interface
+├── data/                       # Test data files
+│   └── AISearchfile*.txt      # Test case files (8-535 cities)
+├── docs/                       # Documentation
+│   ├── AISearchAssignment.pdf # Assignment specification
+│   └── DENLN_Heuristic.pdf    # Research paper on heuristics
+└── Submit/                     # Academic submission results
     ├── cityfiles/             # Input city files
-    ├── pvxf29/               # Student submission
-    │   ├── TourfileA/        # Algorithm A results
-    │   ├── TourfileB/        # Algorithm B results
-    │   └── TourfileC/       # Algorithm C results
-    └── validtourcheck.py     # Tour validation script
+    ├── pvxf29/                # Student submission
+    │   ├── TourfileA/         # Algorithm A results
+    │   ├── TourfileB/         # Algorithm B results
+    │   └── TourfileC/         # Algorithm C results
+    └── validtourcheck.py      # Tour validation script
 ```
 
 ## Algorithms Implemented
@@ -95,18 +99,18 @@ SIZE = 8,
 
 ### Running the Main Program
 ```bash
-python main.py
+python src/main.py
 ```
 
 The program provides an interactive interface with the following commands:
-- `help` - Display available commands
+- `help` - Display available commands and list available data files
 - `brute` - Run brute force search
-- `modified` - Run modified brute force search  
+- `modified` - Run modified brute force search
 - `nearest` - Run nearest neighbor search
 - `genetic` - Run genetic algorithm
 
 ### Example Usage
-1. Start the program: `python main.py`
+1. Start the program: `python src/main.py`
 2. Choose an algorithm: `genetic`
 3. Select a graph file: `AISearchfile012.txt`
 4. The program will generate a tour file with results
